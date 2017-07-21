@@ -38,7 +38,7 @@ steps_per_day<-tapply(activity$steps, activity$date, sum)
 hist(steps_per_day, main="Histogram of number of steps per day", ylim=c(0,30), xlab="total number of steps", col="coral")
 ```
 
-![](RepData_PeerAssessment1/PA1_template_files/figure_markdown_strict/graph1-1.png)
+![plot of chunk graph1-1](RepData_PeerAssessment1/PA1_template_files/figure_markdown_strict/graph1-1.png)
 
 1.  Calculate and report the mean and median of the total number of steps taken per day
 

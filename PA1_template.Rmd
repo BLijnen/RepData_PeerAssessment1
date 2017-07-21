@@ -1,11 +1,20 @@
+---
+output:
+  Rmd_document: default
+  html_document: default
+---
+
 # Reproducible research - course project 1
 
-## Import dataset into R Studio
+## Import dataset into R Studio and load packages
 
 ```{r}
 library(readr)
 activity <- read.csv("C:/Users/blijnen/Documents/activity.csv")
 ```
+library(knitr)
+library(lattice)
+
 
 ## Data preprocessing
 
@@ -25,8 +34,10 @@ steps_per_day<-tapply(activity$steps, activity$date, sum)
 
 2. Make a histogram of the total number of steps taken each day
 
-```{r}
+```graph1
+
 hist(steps_per_day, main="Histogram of number of steps per day", ylim=c(0,30), xlab="total number of steps", col="coral")
+
 ```
 
 3. Calculate and report the mean and median of the total number of steps taken per day
@@ -42,7 +53,7 @@ The average number of steps each day is 10766.19 and the median is 10765.
 
 1. Make a time series plot of the 5-minute interval (x-axis) and the average number of steps taken,   averaged across all days (y-axis)
 
-```{r}
+```{r graph2}
 steps_interval <- tapply(activity$steps, activity$interval, mean, na.rm = TRUE)
 plot(as.numeric(names(steps_interval)),
      steps_interval, 
@@ -89,7 +100,7 @@ impute_NA <- impute_NA[order(impute_NA$date),]
 
 4. Make a histogram of the total number of steps taken each day and Calculate and report the mean and median total number of steps taken per day. Do these values differ from the estimates from the first part of the assignment? What is the impact of imputing missing data on the estimates of the total daily number of steps?
 
-```{r}
+```{r graph3}
 steps_day_impute <- tapply(impute_NA$steps, impute_NA$date, sum)
 hist(steps_day_impute, main="Histogram of number of steps per day (imputed data)", ylim=c(0,30),
      xlab="total number of steps", col="coral")
@@ -112,7 +123,7 @@ impute_NA$day <- ifelse(weekdays(as.Date(impute_NA$date)) == "Saturday" |
 
 2. Make a panel plot containing a time series plot of the 5-minute interval and the average number of steps taken, averaged across all weekday days or weekend days.
 
-```{r}
+```{r graph4}
 day <- weekdays(activity$date)
 day_factor <- vector()
 for (i in 1:nrow(activity)) {
@@ -132,3 +143,4 @@ library(lattice)
 xyplot(steps ~ interval | day_factor, steps_days, type = "l", layout = c(1, 2), 
     xlab = "Interval", ylab = "Number of steps")
 ```
+

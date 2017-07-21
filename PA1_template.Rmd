@@ -1,3 +1,10 @@
+---
+title: "PA1_template"
+output: github_document
+---
+
+
+
 # Reproducible research - course project 1
 
 ## Import dataset into R Studio and load packages
@@ -28,7 +35,7 @@ steps_per_day<-tapply(activity$steps, activity$date, sum)
 
 2. Make a histogram of the total number of steps taken each day
 
-```graph1
+```{r graph1} 
 
 hist(steps_per_day, main="Histogram of number of steps per day", ylim=c(0,30), xlab="total number of steps", col="coral")
 

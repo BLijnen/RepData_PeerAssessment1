@@ -65,7 +65,7 @@ plot(as.numeric(names(steps_interval)),
      col="grey")
 ```
 
-![](PA1_template_files/figure-markdown_github-ascii_identifiers/graph2-1.png)
+![](PA1_template_files/graph1-1.png)
 
 1.  Which 5-minute interval, on average across all the days in the dataset, contains the maximum number of steps?
 
